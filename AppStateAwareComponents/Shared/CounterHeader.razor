@@ -1,0 +1,19 @@
+@inherits AppStateAwareComponentBase
+
+<span>Current App Global Counter: @_counter </span>
+
+@code{
+
+   private Int32 _counter = 0;
+
+   protected override Boolean HandleAppStateChanged(String propertyName, AppState state)
+   {
+       if(propertyName != nameof(AppState.ClickCounter)) {
+           return false;
+       }
+       
+       _counter = state.ClickCounter;
+       return true;
+   }
+
+}
